@@ -39,6 +39,8 @@ function onDataReceived(text) {
   }
   else if (text === 'hello\n') {
     hello();
+  } else if (text === 'help\n') {
+    help();
   }
   else {
     unknownCommand(text);
@@ -67,6 +69,20 @@ function hello() {
   console.log('hello!')
 }
 
+/**
+ * prints all the possible commands
+ * This function is supposed to run when all other commands have failed
+ *
+ * @param  {string} c the text received
+ * @returns {void}
+ */
+function help() {
+  console.log("these are the commands:\n" +
+    " + help: this command will list all the commands for you\n" +
+    " + hello: this command greets you.\n" +
+    " + quit or exit: this command exit the application.\n"
+  )
+}
 
 /**
  * Exits the application
