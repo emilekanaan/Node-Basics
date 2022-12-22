@@ -101,15 +101,20 @@ function add(c) {
  * @returns {void}
  */
 function remove(c) {
-  if (c.length <= 8) {
+  if (c.length <= 7) {
     console.log("removing the last element!")
     list1.pop();
     console.log("last element removed!")
   } else {
     let index = c.slice(7);
-    console.log(`removing element: ${index.slice(0, index.length - 1)}`)
-    list1.splice(index - 1, 1);
-    console.log(`element ${index.slice(0, index.length - 1)} removed!`)
+    if (index.slice(0, index.length - 1) > list1.length || index.slice(0, index.length - 1) < 1 || isNaN(index.slice(0, index.length - 1))) {
+      console.log(`item ${index.slice(0, index.length - 1)} does not exist!`)
+    } else {
+      console.log(`removing element: ${index.slice(0, index.length - 1)}`)
+      list1.splice(index - 1, 1);
+      console.log(`element ${index.slice(0, index.length - 1)} removed!`)
+    }
+
   }
 
 
