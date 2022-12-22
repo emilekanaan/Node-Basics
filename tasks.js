@@ -50,6 +50,8 @@ function onDataReceived(text) {
     add(text)
   } else if (text.startsWith("remove")) {
     remove(text)
+  } else if (text.startsWith("edit")) {
+    edit(text)
   }
   else {
     unknownCommand(text);
@@ -114,10 +116,50 @@ function remove(c) {
       list1.splice(index - 1, 1);
       console.log(`element ${index.slice(0, index.length - 1)} removed!`)
     }
+  }
+}
+
+/**
+ * edit the last item from the list
+ * and if you add it with a number it will edit the item of that number
+ * 
+ * @param {string} c the text received
+ * @returns {void}
+ */
+function edit(c) {
+  if (c.length <= 6) {
+    console.log("Error!\nPlease enter what you want to edit...\ntype help command for more informations");
+  } else {
+    let index = parseInt(c.slice(5))
+    if (isNaN(index)) {
+      let element = c.slice(5)
+      console.log(`editing "${list1[list1.length - 1]}" to "${element.slice(0, element.length - 1)}"...`)
+      list1[list1.length - 1] = element;
+      console.log(`editing completed!`)
+    } else if (index > list1.length || index < 1) {
+      console.log(`item ${index} does not exist`)
+    } else {
+      let element = c.slice(6 + index.toString().length)
+      console.log(`editing "${list1[index - 1]}" to "${element.slice(0, element.length - 1)}"...`)
+      list1[index - 1] = element.slice(0, element.length - 1);
+      console.log(`editing completed!`)
+    }
 
   }
-
-
+  // if (c.length <= 5) {
+  //   console.log("editing the last element!")
+  //   list1.pop();
+  //   console.log("last element editd!")
+  // } else {
+  //   let index = c.slice(5);
+  //   if (index.slice(0, index.length - 1) > list1.length || index.slice(0, index.length - 1) < 1 || isNaN(index.slice(0, index.length - 1))) {
+  //     console.log(`item ${index.slice(0, index.length - 1)} does not exist!`)
+  //   } else {
+  //     console.log(`editing element: ${index.slice(0, index.length - 1)}`)
+  //     list1.splice(index - 1, 1);
+  //     console.log(`element ${index.slice(0, index.length - 1)} editd!`)
+  //   }
+  // }
 }
 
 /**
