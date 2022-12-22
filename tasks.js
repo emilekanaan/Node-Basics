@@ -42,11 +42,15 @@ function onDataReceived(text) {
     hello(text);
   } else if (text === 'help\n') {
     help();
+  } else if (text === 'list\n') {
+    list()
   }
   else {
     unknownCommand(text);
   }
 }
+
+let list1 = ["get potato", "get bread", "get tomato"]
 
 
 /**
@@ -72,6 +76,41 @@ function hello(c) {
 }
 
 /**
+ * add to the list
+ * 
+ * @param {string} c the text received
+ * @returns {void}
+ */
+function add(c) {
+  console.log(`add`)
+}
+
+/**
+ * remove from the list
+ * 
+ * @param {string} c the text received
+ * @returns {void}
+ */
+function remove(c) {
+  console.log(`remove`)
+}
+
+/**
+ * lists the list
+ * 
+ * 
+ * @returns {void}
+ */
+function list() {
+  console.log(`list`)
+  list1.map((item, index) => {
+    index++;
+    console.log(`${index}- ${item}`)
+  })
+}
+
+
+/**
  * prints all the possible commands
  * This function is supposed to lists all the possible commands
  *
@@ -80,7 +119,7 @@ function hello(c) {
 function help() {
   console.log("these are the commands:\n" +
     " + help: this command will list all the commands for you.\n" +
-    " + hello: this command greets you, you have to type hello and then your name (ex: 'hello Emile' it will return 'hello Emile!') so it will greet you with your name, and it can greet you without typing your name also (ex: 'hello' will return 'hello!'\n" +
+    " + hello: this command greets you, you have to type hello and then your name (ex: 'hello Emile' will return 'hello Emile!') so it will greet you with your name, and it can greet you without typing your name also (ex: 'hello' will return 'hello!'\n" +
     " + quit or exit: this command exit the application.\n"
   )
 }
