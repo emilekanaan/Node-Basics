@@ -86,9 +86,9 @@ function hello(c) {
  * @returns {void}
  */
 function add(c) {
-  console.log(`adding: "${c.slice(4, c.length - 1)}"...`)
-  list1.push(c.slice(4, c.length - 1))
-  console.log(`added!`)
+  console.log(`adding: "${c.slice(4, c.length - 1)}"...`);
+  list1.push(c.slice(4, c.length - 1));
+  console.log(`added!`);
 }
 
 /**
