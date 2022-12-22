@@ -38,7 +38,6 @@ function onDataReceived(text) {
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
-
   else if (text.startsWith("hello")) {
     hello(text);
   } else if (text === 'help\n') {
@@ -64,6 +63,7 @@ function unknownCommand(c) {
 
 /**
  * Says hello
+ * 
  * @param {string} c the text received
  * @returns {void}
  */
