@@ -44,6 +44,10 @@ function onDataReceived(text) {
     help();
   } else if (text === 'list\n') {
     list()
+  } else if (text === 'add\n' || text === 'add \n') {
+    console.log("please type what you want to add after the add command")
+  } else if (text.startsWith("add") && text.length > 4) {
+    add(text)
   }
   else {
     unknownCommand(text);
@@ -82,7 +86,9 @@ function hello(c) {
  * @returns {void}
  */
 function add(c) {
-  console.log(`add`)
+  console.log(`adding: "${c.slice(4, c.length - 1)}"...`)
+  list1.push(c.slice(4, c.length - 1))
+  console.log(`added!`)
 }
 
 /**
@@ -102,10 +108,10 @@ function remove(c) {
  * @returns {void}
  */
 function list() {
-  console.log(`list`)
+  console.log(`list:`);
   list1.map((item, index) => {
     index++;
-    console.log(`${index}- ${item}`)
+    console.log(`${index}- ${item}`);
   })
 }
 
