@@ -48,6 +48,8 @@ function onDataReceived(text) {
     console.log("please type what you want to add after the add command")
   } else if (text.startsWith("add") && text.length > 4) {
     add(text)
+  } else if (text.startsWith("remove")) {
+    remove(text)
   }
   else {
     unknownCommand(text);
@@ -98,7 +100,18 @@ function add(c) {
  * @returns {void}
  */
 function remove(c) {
-  console.log(`remove`)
+  if (c.length <= 8) {
+    console.log("removing the last element!")
+    list1.pop();
+    console.log("last element removed!")
+  } else {
+    let index = c.slice(7);
+    console.log(`removing element: ${index.slice(0, index.length - 1)}`)
+    list1.splice(index - 1, 1);
+    console.log(`element ${index.slice(0, index.length - 1)} removed!`)
+  }
+
+
 }
 
 /**
@@ -108,7 +121,7 @@ function remove(c) {
  * @returns {void}
  */
 function list() {
-  console.log(`list:`);
+  console.log(`here is the list:`);
   list1.map((item, index) => {
     index++;
     console.log(`${index}- ${item}`);
