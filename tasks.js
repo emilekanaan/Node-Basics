@@ -71,9 +71,8 @@ function hello() {
 
 /**
  * prints all the possible commands
- * This function is supposed to run when all other commands have failed
+ * This function is supposed to lists all the possible commands
  *
- * @param  {string} c the text received
  * @returns {void}
  */
 function help() {
