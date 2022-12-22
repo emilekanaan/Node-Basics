@@ -14,7 +14,7 @@ function startApp(name) {
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
   console.log(`Welcome to ${name}'s application!`)
-  console.log("--------------------")
+  console.log("--------------------------------------")
 }
 
 
@@ -82,7 +82,7 @@ function hello(c) {
 }
 
 /**
- * add to the list
+ * add items to the list
  * 
  * @param {string} c the text received
  * @returns {void}
@@ -94,7 +94,8 @@ function add(c) {
 }
 
 /**
- * remove from the list
+ * remove the last item from the list
+ * and if you add it with a number it will remove the item of that number
  * 
  * @param {string} c the text received
  * @returns {void}
@@ -115,7 +116,7 @@ function remove(c) {
 }
 
 /**
- * lists the list
+ * lists the items in the list
  * 
  * 
  * @returns {void}
@@ -124,7 +125,7 @@ function list() {
   console.log(`here is the list:`);
   list1.map((item, index) => {
     index++;
-    console.log(`${index}- ${item}`);
+    console.log(`${index} - ${item}`);
   })
 }
 
@@ -137,9 +138,12 @@ function list() {
  */
 function help() {
   console.log("these are the commands:\n" +
-    " + help: this command will list all the commands for you.\n" +
-    " + hello: this command greets you, you have to type hello and then your name (ex: 'hello Emile' will return 'hello Emile!') so it will greet you with your name, and it can greet you without typing your name also (ex: 'hello' will return 'hello!'\n" +
-    " + quit or exit: this command exit the application.\n"
+    " + help : this command will list all the commands for you.\n" +
+    " + hello : this command greets you, you have to type hello and then your name (ex: 'hello Emile' will return 'hello Emile!') so it will greet you with your name, and it can greet you without typing your name also (ex: 'hello' will return 'hello!'\n" +
+    " + quit or exit : this command exit the application.\n" +
+    " + add : this command add items to the list.\n" +
+    " + remove : this command removes the last item from the list and if you add after it a number (ex: 'remove 3') it will remove the number of element from the list.\n" +
+    " + list : this command list all the items in the list.\n"
   )
 }
 
