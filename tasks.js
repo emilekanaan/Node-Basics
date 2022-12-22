@@ -80,7 +80,7 @@ function hello(c) {
 function help() {
   console.log("these are the commands:\n" +
     " + help: this command will list all the commands for you.\n" +
-    " + hello: this command greets you.\n" +
+    " + hello: this command greets you, you have to type hello and then your name (ex: 'hello Emile' it will return 'hello Emile!') so it will greet you with your name, and it can greet you without typing your name also (ex: 'hello' will return 'hello!'\n" +
     " + quit or exit: this command exit the application.\n"
   )
 }
