@@ -205,7 +205,7 @@ function edit(c) {
  */
 function check(c) {
   if (c.length <= 7) {
-    console.log(`please input the item number you want to check`);
+    console.log(`Error!\nplease input the item number you want to check`);
   } else if (list1.length === 0) {
     console.log(`nothing to check, the list is empty!`);
   } else {
@@ -236,7 +236,7 @@ function check(c) {
  */
 function uncheck(c) {
   if (c.length <= 9) {
-    console.log(`please input the item number you want to uncheck`);
+    console.log(`Error!\nplease input the item number you want to uncheck`);
   } else if (list1.length === 0) {
     console.log(`nothing to uncheck, the list is empty!`);
   } else {
@@ -285,14 +285,16 @@ function list() {
  */
 function help() {
   console.log(
-    "these are the commands:\n" +
-    " + help : this command will list all the commands for you.\n" +
-    " + hello : this command greets you, you have to type hello and then your name (ex: 'hello Emile' will return 'hello Emile!') so it will greet you with your name, and it can greet you without typing your name also (ex: 'hello' will return 'hello!'\n" +
-    " + quit or exit : this command exit the application.\n" +
-    " + add : this command add items to the list.\n" +
-    " + remove : this command removes the last item from the list and if you add after it a number (ex: 'remove 3') it will remove the number of element from the list.\n" +
-    " + list : this command list all the items in the list.\n" +
-    " + edit : this command will edit the items on the list (ex: 'edit new text' should change the last task to 'new text') or (ex: 'edit 1 new text' should change the task 1 to 'new text')."
+    "these are the commands:\n\n" +
+    " + help : this command will list all the commands for you.\n\n" +
+    " + hello : this command greets you, you have to type hello and then your name (ex: 'hello Emile' will return 'hello Emile!') so it will greet you with your name, and it can greet you without typing your name also (ex: 'hello' will return 'hello!'.\n\n" +
+    " + quit or exit : this command exit the application.\n\n" +
+    " + add : this command add items to the list.\n\n" +
+    " + remove : this command removes the last item from the list and if you add after it a number (ex: 'remove 3') it will remove the number of element from the list.\n\n" +
+    " + list : this command list all the items in the list.\n\n" +
+    " + edit : this command will edit the items on the list (ex: 'edit new text' should change the last task to 'new text') or (ex: 'edit 1 new text' should change the task 1 to 'new text').\n\n" +
+    " + check : this command will check the unchecked item from the list (ex: if the item 1 is unchecked type 'check 1' so the item 1 will be checked).\n\n" +
+    " + uncheck : this command will uncheck the checked item from the list (ex: if the item 1 is checked type 'uncheck 1' so the item 1 will be unchecked).\n"
   );
 }
 
