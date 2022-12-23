@@ -16,6 +16,13 @@ function startApp(name) {
   console.log("--------------------------------------");
 }
 
+let savefile;
+if (process.argv[2] == null) {
+  savefile = "database.json";
+} else {
+  savefile = process.argv[2];
+}
+
 /**
  * Decides what to do depending on the data that was received
  * This function receives the input sent by the user.
@@ -56,11 +63,22 @@ function onDataReceived(text) {
     unknownCommand(text);
   }
 }
+var list1
+const fs = require("fs");
+try {
+  let data = fs.readFileSync(savefile);
+  var objList = JSON.parse(data);
+}
+catch (e) {
+  console.log(`this file is not present, we will create it!`)
+}
+if (objList !== undefined) {
+  list1 = objList.list1;
+} else {
+  objList = { "list1": [] }
+  list1 = objList.list1;
+}
 
-let fs = require("fs");
-let data = fs.readFileSync("database.json");
-let objList = JSON.parse(data);
-let list1 = objList["list1"];
 
 // let list1 = ["[ ] get potato", "[\u2713] get bread", "[\u2713] get tomato"];
 
@@ -311,8 +329,8 @@ function quit() {
   let fs = require("fs");
   let data = JSON.stringify(objList);
   try {
-    fs.writeFileSync("./database.json", data);
-    console.log(`Saving changes...`)
+    fs.writeFileSync(savefile, data);
+    console.log(`Saving changes...`);
   } catch (error) {
     console.error(error);
   }
