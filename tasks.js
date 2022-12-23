@@ -46,6 +46,10 @@ function onDataReceived(text) {
     add(text);
   } else if (text.startsWith("remove")) {
     remove(text);
+  } else if (text.startsWith("check")) {
+    check(text);
+  } else if (text.startsWith("uncheck")) {
+    uncheck(text);
   } else if (text.startsWith("edit")) {
     edit(text);
   } else {
@@ -146,7 +150,10 @@ function edit(c) {
               element.length - 1
             )}"...`
           );
-          list1[list1.length - 1] = `[ ] ${element.slice(0, element.length - 1)}`;
+          list1[list1.length - 1] = `[ ] ${element.slice(
+            0,
+            element.length - 1
+          )}`;
           console.log(`editing completed!`);
         } else {
           console.log(
@@ -155,7 +162,10 @@ function edit(c) {
               element.length - 1
             )}"...`
           );
-          list1[list1.length - 1] = `[\u2713] ${element.slice(0, element.length - 1)}`;
+          list1[list1.length - 1] = `[\u2713] ${element.slice(
+            0,
+            element.length - 1
+          )}`;
           console.log(`editing completed!`);
         }
       } else if (index > list1.length || index < 1) {
@@ -181,6 +191,68 @@ function edit(c) {
           list1[index - 1] = `[\u2713] ${element.slice(0, element.length - 1)}`;
           console.log(`editing completed!`);
         }
+      }
+    }
+  }
+}
+
+/**
+ * check to changes from unckecked to checked
+ * you want to enter it with a number it will check the item of that number
+ *
+ * @param {string} c the text received
+ * @returns {void}
+ */
+function check(c) {
+  if (c.length <= 7) {
+    console.log(`please input the item number you want to check`);
+  } else if (list1.length === 0) {
+    console.log(`nothing to check, the list is empty!`);
+  } else {
+    let index = parseInt(c.slice(5));
+    if (isNaN(index)) {
+      console.log(`please enter a correct number`);
+    } else if (index > list1.length || index < 1) {
+      console.log(`item ${index} does not exist`);
+    } else {
+      if (list1[index - 1].slice(0, 3) === "[ ]") {
+        let checked = list1[index - 1].replace("[ ]", "[\u2713]");
+        console.log(`checking item ${index}...`);
+        list1[index - 1] = checked;
+        console.log(`item ${index} checked!`);
+      } else {
+        console.log(`this item is already checked!`);
+      }
+    }
+  }
+}
+
+/**
+ * uncheck to changes from ckecked to unchecked
+ * you want to enter it with a number it will uncheck the item of that number
+ *
+ * @param {string} c the text received
+ * @returns {void}
+ */
+function uncheck(c) {
+  if (c.length <= 9) {
+    console.log(`please input the item number you want to uncheck`);
+  } else if (list1.length === 0) {
+    console.log(`nothing to uncheck, the list is empty!`);
+  } else {
+    let index = parseInt(c.slice(7));
+    if (isNaN(index)) {
+      console.log(`please enter a correct number`);
+    } else if (index > list1.length || index < 1) {
+      console.log(`item ${index} does not exist`);
+    } else {
+      if (list1[index - 1].slice(0, 3) !== "[ ]") {
+        let unchecked = list1[index - 1].replace("[\u2713]", "[ ]");
+        console.log(`unchecking item ${index}...`);
+        list1[index - 1] = unchecked;
+        console.log(`item ${index} unchecked!`);
+      } else {
+        console.log(`this item is already unchecked!`);
       }
     }
   }
