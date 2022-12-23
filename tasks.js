@@ -57,7 +57,12 @@ function onDataReceived(text) {
   }
 }
 
-let list1 = ["[ ] get potato", "[\u2713] get bread", "[\u2713] get tomato"];
+let fs = require("fs");
+let data = fs.readFileSync("database.json");
+let objList = JSON.parse(data);
+let list1 = objList["list1"];
+
+// let list1 = ["[ ] get potato", "[\u2713] get bread", "[\u2713] get tomato"];
 
 /**
  * prints "unknown command"
@@ -265,7 +270,6 @@ function uncheck(c) {
  * @returns {void}
  */
 function list() {
-  console.log("[\u2713] or [ ]");
   if (list1.length === 0) {
     console.log(`the list is empty!`);
   } else {
@@ -304,6 +308,15 @@ function help() {
  * @returns {void}
  */
 function quit() {
+  let fs = require("fs");
+  let data = JSON.stringify(objList);
+  try {
+    fs.writeFileSync("./database.json", data);
+    console.log(`Saving changes...`)
+  } catch (error) {
+    console.error(error);
+  }
+
   console.log("Quitting now, goodbye!");
   process.exit();
 }
